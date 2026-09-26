@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Monthsary 💙</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="scene">
+
+    <!-- ENVELOPE -->
+    <div class="envelope" id="envelope">
+
+        <!-- LETTER -->
+        <div class="letter">
+
+            <div class="letter-heart">💙</div>
+
+            <h1>Happy Monthsary</h1>
+
+            <div class="date">
+                To my favorite person — always and forever
+            </div>
+
+            <p>My Palanglang,</p>
+
+            <p>
+                Another month with you is another month that I am
+                grateful for. Thank you for being part of my life,
+                for staying, understanding me, and making ordinary
+                moments feel special.
+            </p>
+
+            <div class="memory">
+
+                <h3>💙 A Little Reminder</h3>
+
+                <p>
+                    No matter how simple our days are, the memories
+                    we create together will always mean so much to me.
+                </p>
+
+            </div>
+
+            <p>
+                I may not always know the perfect words to say,
+                but I hope you know how much I appreciate you.
+                I am happy that I get to share these moments with you.
+            </p>
+
+
+            <!-- PHOTO GALLERY -->
+            <div class="photo-gallery"
+                 onclick="event.stopPropagation()">
+
+                <h2>Our Memories 📸</h2>
+
+                <div class="photos">
+
+                    <!-- PHOTO 1 -->
+                    <div class="photo"
+                         onclick="openImage('./pictures/photo1 .jpg', event)">
+
+                        <img
+                            src="./pictures/photo1 .jpg"
+                            alt="Our memory"
+                        >
+
+                        <div class="photo-caption">
+                            Our moment 💙
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHOTO 2 -->
+                    <div class="photo"
+                         onclick="openImage('./pictures/photo2.jpg', event)">
+
+                        <img
+                            src="./pictures/photo2.jpg"
+                            alt="Our memory"
+                        >
+
+                        <div class="photo-caption">
+                            Just us
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHOTO 3 -->
+                    <div class="photo"
+                         onclick="openImage('./pictures/photo7.jpg', event)">
+
+                        <img
+                            src="./pictures/photo7.jpg"
+                            alt="Our memory"
+                        >
+
+                        <div class="photo-caption">
+                            My favorite memory
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHOTO 4 -->
+                    <div class="photo"
+                         onclick="openImage('./pictures/photo9.jpg', event)">
+
+                        <img
+                            src="./pictures/photo9.jpg"
+                            alt="Our memory"
+                        >
+
+                        <div class="photo-caption">
+                            Always you 💙
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHOTO 5 -->
+                    <div class="photo"
+                         onclick="openImage('./pictures/photo10.jpg', event)">
+
+                        <img
+                            src="./pictures/photo10.jpg"
+                            alt="Our memory"
+                        >
+
+                        <div class="photo-caption">
+                            Together
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHOTO 6 -->
+                    <div class="photo"
+                         onclick="openImage('./pictures/photo6.jpg', event)">
+
+                        <img
+                            src="./pictures/photo6.jpg"
+                            alt="Our memory"
+                        >
+
+                        <div class="photo-caption">
+                            Us against the world
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                Happy monthsary, Palanglang! Here's to more memories,
+                more laughs, more adventures, and more moments
+                that we can call ours.
+            </p>
+
+
+            <div class="signature">
+
+                With all my love,<br>
+
+                Yours always 💙
+
+            </div>
+
+        </div>
+
+
+        <!-- ENVELOPE FRONT -->
+        <div class="front">
+
+            <div class="front-heart">
+                💙
+            </div>
+
+            <p>
+                A special letter<br>
+                <strong>For You</strong>
+            </p>
+
+            <small>
+                Open me 💌
+            </small>
+
+        </div>
+
+
+        <!-- ENVELOPE FLAP -->
+        <div class="flap"></div>
+
+    </div>
+
+
+    <!-- INSTRUCTION -->
+    <div class="instruction" id="instruction">
+
+        💌 Tap the envelope to open your letter
+
+    </div>
+
+</div>
+
+
+<!-- IMAGE LIGHTBOX -->
+<!-- IMPORTANT: Keep this OUTSIDE the envelope -->
+
+<div class="image-lightbox" id="imageLightbox">
+
+    <span
+        class="lightbox-close"
+        onclick="closeImage(event)"
+    >
+        ×
+    </span>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Enlarged memory"
+    >
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>

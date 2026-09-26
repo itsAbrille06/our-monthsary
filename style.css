@@ -1,0 +1,704 @@
+/* ========================================
+   GENERAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, #eaf7ff, transparent 45%),
+        linear-gradient(135deg, #b9ddf5, #e5f4ff, #a9d4ef);
+    color: #263746;
+}
+
+
+/* ========================================
+   SCENE
+======================================== */
+
+.scene {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+
+/* ========================================
+   ENVELOPE
+======================================== */
+
+.envelope {
+    position: relative;
+    width: 650px;
+    max-width: 95vw;
+    min-height: 450px;
+    background: #9dcced;
+    border-radius: 8px;
+    box-shadow:
+        0 20px 45px rgba(0, 50, 90, 0.25),
+        0 5px 12px rgba(0, 0, 0, 0.12);
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+
+/* ========================================
+   LETTER
+======================================== */
+
+.letter {
+    position: relative;
+    width: 90%;
+    margin: 25px auto;
+    padding: 35px;
+    background: #fffdf8;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+
+    /*
+       IMPORTANT:
+       The letter stays in the same position
+       when the envelope opens.
+    */
+    transform: none;
+    transition: none;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   LETTER CONTENT
+======================================== */
+
+.letter-heart {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+.letter h1 {
+    text-align: center;
+    margin: 5px 0 8px;
+    color: #075ca8;
+    font-size: 34px;
+}
+
+.date {
+    text-align: center;
+    color: #6d8496;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.letter p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+
+/* ========================================
+   MEMORY BOX
+======================================== */
+
+.memory {
+    margin: 25px 0;
+    padding: 18px 20px;
+    background: #eaf6ff;
+    border-left: 5px solid #3c9bd3;
+    border-radius: 8px;
+}
+
+.memory h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #075ca8;
+}
+
+.memory p {
+    margin: 0;
+}
+
+
+/* ========================================
+   SIGNATURE
+======================================== */
+
+.signature {
+    margin-top: 30px;
+    text-align: right;
+    font-style: italic;
+    color: #075ca8;
+    font-size: 17px;
+}
+
+
+/* ========================================
+   ENVELOPE FRONT
+======================================== */
+
+.front {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8fc8ed,
+            #b8def4
+        );
+
+    border-radius: 8px;
+
+    z-index: 5;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+
+/* Heart on envelope */
+
+.front-heart {
+    font-size: 70px;
+    margin-bottom: 10px;
+    filter: drop-shadow(
+        0 5px 8px rgba(0, 50, 90, 0.2)
+    );
+}
+
+
+/* Envelope text */
+
+.front p {
+    margin: 5px 0;
+    text-align: center;
+    color: #174a70;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.front small {
+    margin-top: 15px;
+    color: #315f7d;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   ENVELOPE FLAP
+======================================== */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 325px solid transparent;
+    border-right: 325px solid transparent;
+    border-top: 230px solid #76b7df;
+
+    transform-origin: top center;
+
+    z-index: 6;
+
+    transition:
+        transform 0.8s ease,
+        z-index 0.1s linear 0.4s;
+}
+
+
+/* ========================================
+   OPEN ENVELOPE
+======================================== */
+
+.envelope.open .front {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/*
+   Flap opens upward.
+   The letter does NOT move.
+*/
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+
+/* ========================================
+   INSTRUCTION
+======================================== */
+
+.instruction {
+    margin-top: 25px;
+    color: #174a70;
+    font-size: 15px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.65);
+    padding: 10px 18px;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 12px rgba(0, 50, 90, 0.12);
+}
+
+
+/* ========================================
+   POLAROID PHOTO GALLERY
+======================================== */
+
+.photo-gallery {
+    margin: 35px 0;
+    padding: 25px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dbeeff,
+            #f4faff
+        );
+
+    border-radius: 15px;
+
+    border: 1px solid #9dcced;
+
+    box-shadow:
+        0 8px 20px rgba(0, 40, 80, 0.15);
+}
+
+
+/* Gallery title */
+
+.photo-gallery h2 {
+    text-align: center;
+    color: #075ca8;
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+
+
+/* ========================================
+   PHOTOS GRID
+======================================== */
+
+.photos {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 30px 22px;
+
+    padding: 10px;
+}
+
+
+/* ========================================
+   POLAROID
+======================================== */
+
+.photo {
+    position: relative;
+
+    width: 100%;
+
+    background: white;
+
+    /*
+       Polaroid frame
+    */
+    padding:
+        10px
+        10px
+        42px
+        10px;
+
+    border-radius: 2px;
+
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.20);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+    overflow: visible;
+}
+
+
+/* Different Polaroid rotations */
+
+.photo:nth-child(1) {
+    transform: rotate(-3deg);
+}
+
+.photo:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.photo:nth-child(3) {
+    transform: rotate(1.5deg);
+}
+
+.photo:nth-child(4) {
+    transform: rotate(-2deg);
+}
+
+.photo:nth-child(5) {
+    transform: rotate(-1.5deg);
+}
+
+.photo:nth-child(6) {
+    transform: rotate(3deg);
+}
+
+
+/* ========================================
+   PHOTO IMAGE
+======================================== */
+
+.photo img {
+    display: block;
+
+    width: 100%;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 0;
+
+    margin: 0;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* ========================================
+   POLAROID CAPTION
+======================================== */
+
+.photo-caption {
+    position: absolute;
+
+    bottom: 10px;
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #263746;
+
+    font-family:
+        "Segoe Script",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+/* ========================================
+   PHOTO HOVER
+======================================== */
+
+.photo:hover {
+    transform:
+        rotate(0deg)
+        translateY(-10px)
+        scale(1.04);
+
+    box-shadow:
+        0 18px 30px
+        rgba(0, 40, 80, 0.30);
+
+    z-index: 10;
+}
+
+.photo:hover img {
+    transform: scale(1.02);
+}
+
+
+/* Small heart when hovering */
+
+.photo::after {
+    content: "💙";
+
+    position: absolute;
+
+    top: 7px;
+    right: 7px;
+
+    font-size: 15px;
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+}
+
+.photo:hover::after {
+    opacity: 1;
+}
+
+
+/* ========================================
+   IMAGE LIGHTBOX
+======================================== */
+
+.image-lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 20, 40, 0.88);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    padding: 20px;
+}
+
+
+/* Show lightbox */
+
+.image-lightbox.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   ENLARGED POLAROID
+======================================== */
+
+.image-lightbox img {
+    max-width: 85%;
+    max-height: 80vh;
+
+    background: white;
+
+    /*
+       Polaroid frame
+    */
+    padding:
+        12px
+        12px
+        45px
+        12px;
+
+    object-fit: contain;
+
+    border-radius: 2px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.55);
+
+    transform:
+        rotate(-2deg)
+        scale(0.75);
+
+    transition:
+        transform 0.35s ease;
+
+    cursor: pointer;
+}
+
+
+/* Lightbox opening animation */
+
+.image-lightbox.show img {
+    transform:
+        rotate(0deg)
+        scale(1);
+}
+
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.lightbox-close {
+    position: absolute;
+
+    top: 20px;
+    right: 30px;
+
+    color: white;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .scene {
+        padding: 25px 10px;
+    }
+
+    .envelope {
+        width: 96vw;
+        min-height: 400px;
+    }
+
+    .flap {
+        border-left-width: 48vw;
+        border-right-width: 48vw;
+        border-top-width: 190px;
+    }
+
+    .letter {
+        width: 92%;
+        padding: 25px 18px;
+    }
+
+    .letter h1 {
+        font-size: 27px;
+    }
+
+    .letter p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .front-heart {
+        font-size: 55px;
+    }
+
+    .front p {
+        font-size: 19px;
+    }
+
+    /* Two Polaroids per row */
+
+    .photos {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 20px 12px;
+
+        padding: 5px;
+    }
+
+    .photo {
+        padding:
+            6px
+            6px
+            32px
+            6px;
+    }
+
+    .photo img {
+        height: 125px;
+    }
+
+    .photo-caption {
+        font-size: 10px;
+        bottom: 8px;
+    }
+
+    .image-lightbox img {
+        max-width: 90%;
+        max-height: 75vh;
+
+        padding:
+            8px
+            8px
+            35px
+            8px;
+    }
+
+    .lightbox-close {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL PHONES
+======================================== */
+
+@media (max-width: 400px) {
+
+    .photos {
+        grid-template-columns: 1fr;
+    }
+
+    .photo img {
+        height: 180px;
+    }
+
+    .envelope {
+        min-height: 350px;
+    }
+
+    .flap {
+        border-top-width: 160px;
+    }
+}
